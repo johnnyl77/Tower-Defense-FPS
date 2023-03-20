@@ -1,6 +1,6 @@
 extends KinematicBody
 
-#used as a state varible that updates wether it is being dragged or not
+#used as a state variable that updates whether it is being dragged or not
 var x = false
 var Ground 
 
