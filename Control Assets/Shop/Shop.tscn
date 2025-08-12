@@ -1,0 +1,214 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Control Assets/Shop/ShopTowerButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/coolvetica rg.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Control Assets/Shop/Shop.gd" type="Script" id=3]
+[ext_resource path="res://Fonts/Lora-Bold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 49
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="Shop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 150.0
+margin_top = 70.0
+margin_right = -150.0
+margin_bottom = -150.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.247059, 0.0509804, 0.0509804, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ShopLabel" type="Label" parent="."]
+modulate = Color( 0.858824, 0.203922, 0.203922, 0.705882 )
+anchor_right = 1.0
+margin_bottom = 60.0
+custom_fonts/font = SubResource( 1 )
+text = "Shop"
+align = 1
+valign = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -59.0
+margin_bottom = 59.0
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+margin_right = 724.0
+margin_bottom = 118.0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/CenterContainer"]
+margin_left = 77.0
+margin_right = 647.0
+margin_bottom = 118.0
+custom_constants/vseparation = 40
+custom_constants/hseparation = 50
+columns = 4
+
+[node name="Cannon" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_right = 92.0
+margin_bottom = 39.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Cannon"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/Cannon"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+margin_right = 98.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "300"
+align = 2
+valign = 2
+
+[node name="Machine Gun" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 145.0
+margin_right = 280.0
+margin_bottom = 39.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Gatling Tower"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/Machine Gun"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -39.0
+margin_right = 143.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1000"
+align = 2
+valign = 2
+
+[node name="Sniper" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 330.0
+margin_right = 412.0
+margin_bottom = 39.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Sniper"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/Sniper"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "800"
+align = 2
+valign = 2
+
+[node name="Tesla" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 475.0
+margin_right = 552.0
+margin_bottom = 39.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Tesla"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/Tesla"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "500"
+align = 2
+valign = 2
+
+[node name="CanonUpgrade" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_top = 79.0
+margin_right = 95.0
+margin_bottom = 118.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Upgrade"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/CanonUpgrade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "600"
+align = 2
+valign = 2
+
+[node name="GatlingTowerUpgrade" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 145.0
+margin_top = 79.0
+margin_right = 240.0
+margin_bottom = 118.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Upgrade"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/GatlingTowerUpgrade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "2000"
+align = 2
+valign = 2
+
+[node name="SniperUpgrade" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 330.0
+margin_top = 79.0
+margin_right = 425.0
+margin_bottom = 118.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Upgrade"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/SniperUpgrade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1600"
+align = 2
+valign = 2
+
+[node name="TeslaUpgrade" parent="MarginContainer/CenterContainer/GridContainer" instance=ExtResource( 1 )]
+margin_left = 475.0
+margin_top = 79.0
+margin_right = 570.0
+margin_bottom = 118.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Upgrade"
+
+[node name="Cost" type="Label" parent="MarginContainer/CenterContainer/GridContainer/TeslaUpgrade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "1000"
+align = 2
+valign = 2
+
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/Cannon" to="." method="_on_Cannon_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/Machine Gun" to="." method="_on_Machine_Gun_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/Sniper" to="." method="_on_Sniper_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/Tesla" to="." method="_on_Tesla_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/CanonUpgrade" to="." method="_on_CanonUpgrade_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/GatlingTowerUpgrade" to="." method="_on_GatlingTowerUpgrade_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/SniperUpgrade" to="." method="_on_SniperUpgrade_pressed"]
+[connection signal="pressed" from="MarginContainer/CenterContainer/GridContainer/TeslaUpgrade" to="." method="_on_TeslaUpgrade_pressed"]

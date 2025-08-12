@@ -1,0 +1,249 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/coolvetica rg.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Meshes/Shotgun/shotgun.fbx" type="PackedScene" id=3]
+[ext_resource path="res://Meshes/Shotgun/Muzzle_Flash.png" type="Texture" id=4]
+[ext_resource path="res://Towers/166191__shawnyboy__gunshot-4.wav" type="AudioStream" id=5]
+[ext_resource path="res://Meshes/Shotgun/561465__combatsfx4you__shotgun-pump.wav" type="AudioStream" id=6]
+[ext_resource path="res://Control Assets/SeekPng.com_screen-texture-png_3729943.png" type="Texture" id=7]
+[ext_resource path="res://Control Assets/Crosshair.png" type="Texture" id=8]
+
+[sub_resource type="CapsuleShape" id=1]
+
+[sub_resource type="CapsuleMesh" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 126
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 40
+font_data = ExtResource( 2 )
+
+[node name="Player" type="KinematicBody"]
+transform = Transform( 1.5, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="Head" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31764, 0 )
+
+[node name="Camera" type="Camera" parent="Head"]
+transform = Transform( 0.666667, 0, 0, 0, 0.5, 0, 0, 0, 0.666667, 0, 0, 0 )
+current = true
+far = 1000.0
+
+[node name="BuddhaVisage" type="SpotLight" parent="Head/Camera"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 15.3585, 0 )
+visible = false
+spot_range = 96.0
+spot_angle = 105.0
+
+[node name="shotgun" parent="Head/Camera" instance=ExtResource( 3 )]
+transform = Transform( -0.0138444, 0, 0.587899, 0, 0.784083, 0, -0.587899, 0, -0.0138444, 0.0776411, -0.715163, -2.43213 )
+
+[node name="BulletStart" type="Spatial" parent="Head/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.447471, -3.8463 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Head/Camera"]
+transform = Transform( -0.593107, -5.1851e-08, -2.59255e-08, 2.59255e-08, 1.13324e-15, -0.593107, 5.18511e-08, -0.593107, 1.13324e-15, 0.0395994, -0.459986, -4.61424 )
+visible = false
+texture = ExtResource( 4 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Head/Camera/Sprite3D"]
+stream = ExtResource( 5 )
+unit_db = 0.1
+max_db = 6.0
+
+[node name="PumpReload" type="AudioStreamPlayer3D" parent="Head/Camera/Sprite3D"]
+stream = ExtResource( 6 )
+unit_db = 29.68
+max_db = 6.0
+
+[node name="Reloadtimer" type="Timer" parent="Head/Camera/Sprite3D"]
+
+[node name="Sprite3D2" type="Sprite3D" parent="Head/Camera"]
+transform = Transform( 0.446119, -2.41647e-09, -0.390836, 0.390837, -3.65845e-08, 0.446119, -2.59255e-08, -0.593107, -2.59255e-08, 0.0395994, -0.459986, -4.57656 )
+visible = false
+texture = ExtResource( 4 )
+
+[node name="GunMuzzle_T" type="Timer" parent="Head/Camera"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("../Head")
+
+[node name="Fullscreen" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="UserOverlay" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="UserOverlay"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 25.0
+margin_right = -25.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserOverlay/MarginContainer"]
+margin_right = 974.0
+margin_bottom = 575.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserOverlay/MarginContainer/VBoxContainer"]
+margin_right = 974.0
+margin_bottom = 82.0
+
+[node name="HP_Label" type="Label" parent="UserOverlay/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 21.0
+margin_right = 141.0
+margin_bottom = 60.0
+size_flags_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "HP: 100/100"
+align = 3
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UserOverlay/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 869.0
+margin_right = 974.0
+margin_bottom = 82.0
+
+[node name="Score_Label" type="Label" parent="UserOverlay/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_right = 105.0
+margin_bottom = 39.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 4 )
+text = "Score: 0"
+
+[node name="Wave_Label" type="Label" parent="UserOverlay/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 105.0
+margin_bottom = 82.0
+grow_horizontal = 0
+custom_fonts/font = SubResource( 9 )
+text = "Wave: 0"
+
+[node name="Crosshair" type="Sprite" parent="UserOverlay"]
+position = Vector2( 512, 300 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 8 )
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 600 )
+size_flags_stretch_ratio = 1.18
+
+[node name="GameOver" type="Label" parent="GameOver/MarginContainer/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 152.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "GAME OVER"
+align = 1
+
+[node name="Padding_GOFScore" type="MarginContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+margin_top = 156.0
+margin_right = 1024.0
+margin_bottom = 166.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="FinalScore" type="Label" parent="GameOver/MarginContainer/VBoxContainer"]
+margin_top = 170.0
+margin_right = 1024.0
+margin_bottom = 229.0
+custom_fonts/font = SubResource( 6 )
+text = "Final Score: 0"
+align = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+margin_top = 233.0
+margin_right = 1024.0
+margin_bottom = 333.0
+rect_min_size = Vector2( -1, 100 )
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/MarginContainer/VBoxContainer"]
+margin_top = 337.0
+margin_right = 1024.0
+margin_bottom = 392.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/MarginContainer/VBoxContainer/MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 55.0
+alignment = 1
+
+[node name="RestartBTN" type="Button" parent="GameOver/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 199.0
+margin_right = 371.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 7 )
+text = "RESTART"
+
+[node name="MarginContainer2" type="MarginContainer" parent="GameOver/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 375.0
+margin_right = 650.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 275, 0 )
+
+[node name="QuitBTN" type="Button" parent="GameOver/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 654.0
+margin_right = 745.0
+margin_bottom = 55.0
+custom_fonts/font = SubResource( 8 )
+text = "QUIT"
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+margin_left = 749.0
+margin_right = 824.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 75, 0 )
+
+[node name="Indicator" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="DamageIndicator" type="Sprite" parent="."]
+visible = false
+position = Vector2( 514, 302 )
+scale = Vector2( 1.72054, 1.43062 )
+texture = ExtResource( 7 )
+
+[connection signal="timeout" from="Head/Camera/Sprite3D/Reloadtimer" to="." method="_on_Reloadtimer_timeout"]
+[connection signal="timeout" from="Head/Camera/GunMuzzle_T" to="." method="_on_GunMuzzle_T_timeout"]
+[connection signal="timeout" from="Fullscreen" to="." method="_on_Fullscreen_timeout"]
+[connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/RestartBTN" to="." method="_on_RestartBTN_pressed"]
+[connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/QuitBTN" to="." method="_on_QuitBTN_pressed"]
+[connection signal="timeout" from="Indicator" to="." method="_on_Indicator_timeout"]

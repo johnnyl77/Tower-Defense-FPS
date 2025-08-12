@@ -1,0 +1,8 @@
+{
+	"contains_albedo": false,
+	"resolution": 2048,
+	"src": {
+		"a": "res://Textures/Grass2k/Ground037_2K_Roughness.jpg",
+		"rgb": "res://Textures/Grass2k/Ground037_2K_NormalGL.jpg"
+	}
+}

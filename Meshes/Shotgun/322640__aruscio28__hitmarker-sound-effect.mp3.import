@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/322640__aruscio28__hitmarker-sound-effect.mp3-c30e43d04bbf2eaaaf0e7894cbdc0fdf.mp3str"
+
+[deps]
+
+source_file="res://Meshes/Shotgun/322640__aruscio28__hitmarker-sound-effect.mp3"
+dest_files=[ "res://.import/322640__aruscio28__hitmarker-sound-effect.mp3-c30e43d04bbf2eaaaf0e7894cbdc0fdf.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

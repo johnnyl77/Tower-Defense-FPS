@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://menus/Fire Background.webm" type="VideoStream" id=1]
+[ext_resource path="res://menus/skull.png" type="Texture" id=2]
+[ext_resource path="res://menus/arapey.regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://menus/Instructions.gd" type="Script" id=4]
+[ext_resource path="res://menus/FireBackground.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 69
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+use_filter = true
+extra_spacing_bottom = -8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 3 )
+
+[node name="Node" type="Node"]
+script = ExtResource( 4 )
+
+[node name="FireBackground" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 1 )
+autoplay = true
+script = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 5.0
+margin_top = 90.0
+margin_right = 1029.0
+margin_bottom = 157.0
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 76.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "SPIRITUAL GUIDANCE"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_left = 196.0
+margin_top = 158.0
+margin_right = 829.0
+margin_bottom = 465.0
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+margin_right = 633.0
+margin_bottom = 249.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "CAMERA MODE CONTROLS:
+ - Left Mouse to select towers
+ - E to open inventory
+ - Q to open shop
+ - Z to put tower into inventory (while selected)
+ - Once you're prepared to start the wave, press TAB to begin
+
+FIRST PERSON MODE CONTROLS:
+ - WASD to move
+ - Space to jump
+ - Left Mouse to fire Pak Gun
+"
+autowrap = true
+
+[node name="BackButton" type="TextureButton" parent="VBoxContainer2"]
+margin_top = 253.0
+margin_right = 633.0
+margin_bottom = 253.0
+
+[node name="Back" type="Label" parent="VBoxContainer2/BackButton"]
+margin_left = -2.0
+margin_top = 19.0
+margin_right = 631.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "BACK"
+
+[node name="ShovelPointer" type="Sprite" parent="VBoxContainer2/BackButton/Back"]
+position = Vector2( 108, 36 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+offset = Vector2( -93.3333, -126.667 )
